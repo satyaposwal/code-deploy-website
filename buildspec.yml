@@ -1,13 +1,40 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 12  
+    commands:
+      - echo Installing Mocha...
+      - npm install -g mocha
+      - echo Installing Mochaawesome...
+      - npm install -g mochaawesome
+      - echo Installing chai...
+      - npm install -g chai
+      
+      
+  pre_build:
+    commands:
+      - echo Installing source NPM dependencies...
+      - npm install
+      - npm install unit.js
   build:
     commands:
-    - echo "This is build phase... Zipping my webpage"
- 
+      - echo Build started on `date`
+      - echo Compiling the Node.js code
+       - echo "This is build phase... Zipping my webpage"
+      - mocha test.js
   post_build:
     commands:
-    - echo "Deployed to S3"
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
+# used only for building and testing.
+# ExpressJS apps will need other artifact directories included (bin/*, public/*, routes/*, views/* etc).
 artifacts:
   files:
-    - '**/*'
+    - app.js
+    - index.html
+    - package.json
+    - node_modules/async/*
+    - node_modules/lodash/*
