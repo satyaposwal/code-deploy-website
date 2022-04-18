@@ -5,6 +5,10 @@ phases:
     runtime-versions:
       nodejs: 12  
     commands:
+      - echo installing terraform
+      - wget https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip --2020-10-24 11:36:50-- https://releases.hashicorp.com/terraform/0.13.5/terraform_0.13.5_linux_amd64.zip
+      - unzip terraform_0.13.5_linux_amd64.zip
+      - terraform --version
       - echo Installing Mocha...
       - npm install -g mocha
       - echo Installing chai...
@@ -19,14 +23,16 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
-      - npm install unit.js
-      
+      - npm install unit.js      
+      - terraform init
+      - terraform validate
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code      
       - mocha test.js
       - echo npn run test
+      - terraform plan
       #- npm run test
   post_build:
     commands:
