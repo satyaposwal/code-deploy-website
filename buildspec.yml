@@ -5,11 +5,6 @@ phases:
     runtime-versions:
       nodejs: 12  
     commands:
-      - echo installing terraform
-      - sudo yum install -y yum-utils
-      - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-      - sudo yum -y install terraform
-      - terraform --version
       - echo Installing Mocha...
       - npm install -g mocha
       - echo Installing chai...
@@ -25,15 +20,12 @@ phases:
       - echo Installing source NPM dependencies...
       - npm install
       - npm install unit.js      
-      - terraform init
-      - terraform validate
   build:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code      
       - mocha test.js
       - echo npn run test
-      - terraform plan
       #- npm run test
   post_build:
     commands:
