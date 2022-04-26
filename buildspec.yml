@@ -30,7 +30,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - aws s3 cp s3://aws-codedeploy-us-east-2/samples/latest/SampleApp_Linux.zip . --region us-east-2
+      - aws s3 cp s3://nextgendemobckt/satyendra/demo.exe
       - git add .
       - git commit -m "Added sample app"
       - git push
