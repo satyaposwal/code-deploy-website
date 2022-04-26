@@ -30,6 +30,10 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
+      - aws s3 cp s3://aws-codedeploy-us-east-2/samples/latest/SampleApp_Linux.zip . --region us-east-2
+      - git add .
+      - git commit -m "Added sample app"
+      - git push
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
 # used only for building and testing.
