@@ -30,7 +30,7 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - aws s3 cp s3://nextgendemobckt/satyendra/demo.zip . --region us-east-1
+      - aws s3 cp s3://nextgendemobckt/satyendra/demo.zip --region us-east-1
       - git add .
       - git commit -m "Added sample app"
       - git push
