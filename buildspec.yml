@@ -6,15 +6,15 @@ phases:
       nodejs: 12  
     commands:
       - echo Installing Mocha...
-      - npm install -g mocha
+      #- npm install -g mocha
       - echo Installing chai...
-      - npm install -g chai
+      #- npm install -g chai
       - echo Installing mochawesome...
-      - npm install -g mochawesome
+      #- npm install -g mochawesome
       - echo Installing chai-json-schema...
-      - npm install -g chai-json-schema
+      #- npm install -g chai-json-schema
       - echo Installing supertest...
-      - npm install -g supertest
+      #- npm install -g supertest
   pre_build:
     commands:
       - echo Installing source NPM dependencies...
@@ -24,7 +24,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Compiling the Node.js code      
-      - mocha test.js
+      #- mocha test.js
       - echo npn run test
       #- npm run test
   post_build:
